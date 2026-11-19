@@ -1,11 +1,18 @@
 """FastAPI-App: stellt die Tragbarkeitsrechnung als REST-Endpoint bereit."""
 
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel, Field
 
 from .tragbarkeit import berechne_tragbarkeit
 
 app = FastAPI(title="HypothekenTragbarkeitAPI")
+
+
+@app.get("/", include_in_schema=False)
+def startseite():
+    # Startseite leitet direkt auf die Swagger-Doku weiter
+    return RedirectResponse(url="/docs")
 
 
 class TragbarkeitInput(BaseModel):
