@@ -1,0 +1,15 @@
+$schema: https://azuremlschemas.azureedge.net/latest/MLTable.schema.json
+type: mltable
+paths:
+  - file: ./hypozins_usa.csv
+transformations:
+  - read_delimited:
+      delimiter: ','
+      encoding: 'utf8'
+      header: all_files_same_headers
+  - convert_column_types:
+      - columns: datum
+        column_type:
+          datetime:
+            formats:
+              - "%Y-%m-%d"
