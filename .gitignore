@@ -1,3 +1,7 @@
 .venv/
 __pycache__/
 Code/endpoint_key.txt
+# Secrets: Endpoint-Key und Kopien davon in jedem Ordner, .env-Dateien
+endpoint_key*
+.env
+.env.*

@@ -1,0 +1,14 @@
+# Direkte Abhängigkeiten der API (von Hand gepflegt).
+# requirements.txt wird daraus erzeugt - NICHT von Hand bearbeiten:
+#   uvx --python 3.13 --from pip-tools==7.7.0 pip-compile --generate-hashes --allow-unsafe requirements.in
+# (Befehl im Repo-Root ausführen; Details siehe SUPPLY_CHAIN.md)
+
+# Nur fertige Wheels installieren, nie aus Quellcode bauen: Build-Werkzeuge (z.B. setuptools)
+# würden sonst ohne Hash-Prüfung nachgeladen.
+--only-binary :all:
+
+fastapi==0.165.0
+uvicorn[standard]==0.54.0
+pydantic==2.14.4
+requests==2.34.2
+ipykernel==7.4.0

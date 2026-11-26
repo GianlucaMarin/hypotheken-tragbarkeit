@@ -1,0 +1,12 @@
+# Dependabot: prüft jeden Montag die Python-Abhängigkeiten und öffnet Update-PRs
+# für die direkten Abhängigkeiten aus requirements.in. Erkennt die per pip-compile
+# (--generate-hashes) erzeugte requirements.txt und kompiliert sie samt SHA-256-Hashes neu.
+# Python-Version: aus dem pip-compile-Header (3.13), sonst aus .python-version.
+# Sicherheits-Alerts (alle 53 Pakete inkl. Unterpakete) sind separat in den Repo-Settings aktiv.
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
