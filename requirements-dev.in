@@ -1,0 +1,23 @@
+# Lokale Entwicklung: API + Notebooks (Code/*.ipynb) + Code/daten_erstellen.py. NICHT für Render.
+# requirements-dev.txt wird daraus erzeugt - NICHT von Hand bearbeiten (nach requirements.txt):
+#   uvx --python 3.13 --from pip-tools==7.7.0 pip-compile --generate-hashes --allow-unsafe requirements-dev.in
+# (Befehl im Repo-Root ausführen; Details siehe SUPPLY_CHAIN.md)
+
+# Gemeinsame Pakete exakt in der Version wie auf Render
+-c requirements.txt
+# Die API selbst (inkl. --only-binary :all:), damit sie auch lokal läuft.
+# NICHT entfernen: Dependabot bestimmt die Kompilier-Reihenfolge nur über -r (nicht über -c).
+# Ohne diese Zeile würde die Dev-Datei vor requirements.txt kompiliert und Updates schlügen fehl.
+-r requirements.in
+
+ipykernel==7.4.0
+requests==2.34.2
+certifi==2026.11.20
+pandas==3.1.1
+matplotlib==3.11.2
+plotly==7.1.0
+nbformat==5.11.1
+
+# macOS-Abhängigkeit von ipykernel, bewusst ohne Marker gepinnt: so ergibt pip-compile auf
+# macOS und Linux (Dependabot) dieselbe Datei. Auf Linux installiert, aber wirkungslos.
+appnope==1.0.0

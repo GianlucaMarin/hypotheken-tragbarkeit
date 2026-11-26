@@ -1,4 +1,5 @@
-# Direkte Abhängigkeiten der API (von Hand gepflegt).
+# Laufzeit-Abhängigkeiten der API - nur das, was auf Render läuft (von Hand gepflegt).
+# Notebook- und Skript-Pakete stehen in requirements-dev.in.
 # requirements.txt wird daraus erzeugt - NICHT von Hand bearbeiten:
 #   uvx --python 3.13 --from pip-tools==7.7.0 pip-compile --generate-hashes --allow-unsafe requirements.in
 # (Befehl im Repo-Root ausführen; Details siehe SUPPLY_CHAIN.md)
@@ -10,5 +11,3 @@
 fastapi==0.165.0
 uvicorn[standard]==0.54.0
 pydantic==2.14.4
-requests==2.34.2
-ipykernel==7.4.0
